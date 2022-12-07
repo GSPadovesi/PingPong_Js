@@ -7,6 +7,34 @@
     <title>PingPong</title>
 </head>
 <body>
-    
+    <canvas id="folha" width="600" height="500"></canvas>
+    <script>
+        //Compoents
+        const folhaMesa = document.getElementById("folha");
+        const areaMesa = folhaMesa.getContext("2d");
+        const larguraFolha = 600;
+        const alturaFolha = 500;
+
+        //Mesa
+        areaMesa.fillStyle = "#000";
+        areaMesa.fillRect(0, 0,  larguraFolha, alturaFolha);
+        
+        //Rede
+        areaMesa.fillStyle = "white";
+        areaMesa.fillRect(larguraFolha/2 - 2, 0, 4, alturaFolha);
+
+        //Raquete 1
+        areaMesa.fillStyle = "green";
+        areaMesa.fillRect(0, 50, 5, 50);
+
+        //Raquete 2
+        areaMesa.fillStyle = "red";
+        areaMesa.fillRect(595, 50, 5, 50);
+
+        //Criando a bola
+        areaMesa.fillStyle = "purple";
+        areaMesa.fillRect(30, 30, 5, 5);
+
+    </script>
 </body>
 </html>

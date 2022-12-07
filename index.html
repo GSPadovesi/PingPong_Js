@@ -4,37 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PingPong</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    
+    <title>Ping-Pong</title>
 </head>
 <body>
     <canvas id="folha" width="600" height="500"></canvas>
     <script>
-        //Compoents
-        const folhaMesa = document.getElementById("folha");
-        const areaMesa = folhaMesa.getContext("2d");
-        const larguraFolha = 600;
-        const alturaFolha = 500;
+        window.onload = function(){
+            setInterval(executar, 1000 / 30);
+        }
+        var posicaoBolaX = posicaoBolaY = 10;
+        function executar() {
+            //Criando os componentes do jogo
+            const folhaDesenho = document.getElementById("folha");
+            const areaDesenho = folhaDesenho.getContext("2d");
+            let larguraCampo = 600;
+            let alturaCampo = 500;
+            var larguraLinha = 5;
+            var larguraBola = 5;
+            var alturaRaquete = 50;
+            var diametroBola = 10;
 
-        //Mesa
-        areaMesa.fillStyle = "#000";
-        areaMesa.fillRect(0, 0,  larguraFolha, alturaFolha);
-        
-        //Rede
-        areaMesa.fillStyle = "white";
-        areaMesa.fillRect(larguraFolha/2 - 2, 0, 4, alturaFolha);
+            //Criando a mesa
+            areaDesenho.fillStyle = "black";
+            areaDesenho.fillRect(0, 0, larguraCampo, alturaCampo);
 
-        //Raquete 1
-        areaMesa.fillStyle = "green";
-        areaMesa.fillRect(0, 50, 5, 50);
+            //Criando a linha do meio
+            areaDesenho.fillStyle = "#fff";
+            areaDesenho.fillRect(larguraCampo/2 - larguraLinha/2, 0, larguraLinha, alturaCampo);
 
-        //Raquete 2
-        areaMesa.fillStyle = "red";
-        areaMesa.fillRect(595, 50, 5, 50);
+            //Criando a raquete 1
+            areaDesenho.fillStyle = "green";
+            areaDesenho.fillRect(0, 225, larguraLinha, alturaRaquete)
 
-        //Criando a bola
-        areaMesa.fillStyle = "purple";
-        areaMesa.fillRect(30, 30, 5, 5);
+            //Criando a raquete 2
+            areaDesenho.fillStyle = "blue";
+            areaDesenho.fillRect(larguraCampo - larguraLinha, 225, larguraLinha, alturaRaquete)
 
+            //Criando a bola
+            areaDesenho.fillStyle = "red";
+            areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY, larguraBola, larguraBola)
+
+            posicaoBolaX = posicaoBolaX + 1;
+            posicaoBolaY = posicaoBolaY + 1;
+            
+            // //Criando a animação do game
+            // var contador = 0;
+            // while(contador < 50){
+            //     areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY, larguraBola, larguraBola)
+            //     posicaoBolaX++;
+            //     posicaoBolaY++;
+            //     contador++;
+            // }
+     }
     </script>
 </body>
 </html>

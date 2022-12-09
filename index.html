@@ -15,6 +15,7 @@
             setInterval(executar, 1000 / 30);
         }
         var posicaoBolaX = posicaoBolaY = 10;
+        var velocidadeBolaPosicaoX = velocidadeBolaPosicaoY = 5;
         function executar() {
             //Criando os componentes do jogo
             const folhaDesenho = document.getElementById("folha");
@@ -46,17 +47,24 @@
             areaDesenho.fillStyle = "red";
             areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY, larguraBola, larguraBola)
 
-            posicaoBolaX = posicaoBolaX + 1;
-            posicaoBolaY = posicaoBolaY + 1;
-            
-            // //Criando a animação do game
-            // var contador = 0;
-            // while(contador < 50){
-            //     areaDesenho.fillRect(posicaoBolaX - diametroBola / 2, posicaoBolaY, larguraBola, larguraBola)
-            //     posicaoBolaX++;
-            //     posicaoBolaY++;
-            //     contador++;
-            // }
+            posicaoBolaX = posicaoBolaX + velocidadeBolaPosicaoX;
+            posicaoBolaY = posicaoBolaY + velocidadeBolaPosicaoY;
+
+            if(posicaoBolaY < 0 && velocidadeBolaPosicaoY < 0){
+                velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            }
+
+            if(posicaoBolaY > alturaCampo && velocidadeBolaPosicaoY > 0){
+                velocidadeBolaPosicaoY = -velocidadeBolaPosicaoY;
+            }
+
+            if(posicaoBolaX < 0 && velocidadeBolaPosicaoX < 0){
+                velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
+            }
+
+            if(posicaoBolaX > larguraCampo && velocidadeBolaPosicaoX > 0){
+                velocidadeBolaPosicaoX = -velocidadeBolaPosicaoX;
+            }      
      }
     </script>
 </body>
